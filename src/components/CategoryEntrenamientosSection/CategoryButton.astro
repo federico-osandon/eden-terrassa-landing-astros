@@ -1,0 +1,75 @@
+---
+const { href = '#' } = Astro.props
+---
+<div class="content-button">
+    <a href={href}>
+        <slot />
+    </a>
+
+</div>
+
+<style>
+    .content-button {
+        width: 30%; /* Ajustado para mejor distribución */
+        max-width: 300px; /* Límite máximo de ancho */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        transition: all 0.3s ease; /* Transición suave */
+    }
+    a {
+        width: 100%;
+        color: #f7f7f7;
+        text-decoration: none;
+        text-wrap: balance;
+        text-align: center; /* Centrar texto */
+        font-size: 1rem; /* Tamaño base de fuente */
+
+        border: 3px solid #78866b;
+        border-radius: 5px;
+
+        padding: 12px 15px;
+        margin: 5px;
+        transition: all 0.3s ease; /* Transición suave */
+    }
+
+    a:hover {
+        color: #000;
+        text-decoration: none;
+        background-color: #B4CD02; /* Usar el verde corporativo */
+        border-color: #B4CD02;
+        transform: translateY(-3px); /* Efecto de elevación */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra al hacer hover */
+    }
+
+    @media (max-width: 1024px) {
+        .content-button {
+            width: 45%;
+            max-width: 250px;
+		}
+	}
+
+    @media (max-width: 768px) {
+        .content-button {
+            width: 80%;
+            max-width: none;
+		}
+
+        a {
+            font-size: 0.95rem;
+            padding: 10px 12px;
+        }
+	}
+
+    @media (max-width: 480px) {
+        .content-button {
+            width: 100%;
+        }
+
+        a {
+            font-size: 0.9rem;
+            padding: 8px 10px;
+        }
+    }
+</style>

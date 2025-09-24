@@ -1,0 +1,29 @@
+---
+---
+
+<div class="youtube-content">
+    <slot />
+</div>
+
+<style>
+    .youtube-content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        
+        margin: 15px auto;
+
+        width: 45%;
+        height: 45%;
+        /* max-width: 600px; */
+
+    }
+
+   
+    @media (max-width: 768px) {
+        .youtube-content {
+            width: 100%;
+        }
+    }
+</style>

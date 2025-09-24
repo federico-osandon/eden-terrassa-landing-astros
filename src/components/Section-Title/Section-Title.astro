@@ -1,0 +1,56 @@
+---
+
+---
+
+<header class="content-title">
+    <h2 class="entrenamientos-tile">
+        <slot />
+    </h2>
+</header>
+
+<style>
+    .content-title {
+		width: 100%;
+		height: 50px;
+
+		position: relative;
+	
+		/* padding-bottom: 20px; */
+
+		display: flex;
+		/* justify-content: center; */
+		align-items: center;
+	}
+
+
+	.entrenamientos-tile {
+		text-align: center;	
+
+		color: #78866B;
+		font-size: 1.5rem;
+		text-transform: uppercase;
+
+		display: flex;
+		align-items: center;
+		/* line-height: 1px; */
+	}
+
+	.entrenamientos-tile::after {
+		content: "";
+		width: 240px;
+		height: 1px;
+
+		margin: 9px 9px;
+
+		display: inline-block;
+		background-color: #78866b;
+	}
+
+	@media (max-width: 768px) {
+		.entrenamientos-tile {
+			width: 0;
+			font-size: 1.2rem;
+		}
+	}
+
+</style>

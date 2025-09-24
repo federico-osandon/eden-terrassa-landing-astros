@@ -1,0 +1,252 @@
+---
+import GradientCircles from '../GradientCircles/GradientCircles.astro';
+---
+
+<section class="hero">
+    <GradientCircles class="hero-circles" variant="alt2" />
+    <div class="entrenamientos-top">
+        <h1 class="titulo-sup">ENTRENAMIENTOS</h1>
+    </div>
+    <div class="logo">
+        <img src="/eden-logo.svg" alt="Logo-eden" />
+	</div>
+    <div class="entrenamientos-bottom">
+        <h1 class="titulo-end">ENTRENAMIENTOS</h1>
+    </div>
+</section>
+
+<style>
+	/* Evitar scroll horizontal */
+	:global(body) {
+		overflow-x: hidden;
+	}
+
+	.menu-hamb img {
+		width: 30px;
+		margin-right: 20px;
+		/* background-color: #ddd; */
+		cursor: pointer;
+	}
+
+	.hero {
+		width: 100%;
+		height: 100vh;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+		/* background-image: url(/images/pizzarra.webp);
+		background-size: cover;
+		background-position: center; */
+
+		/* background: linear-gradient(to right, #111, #111, #111,#222, #222, #333, #333, #333, #333, #222, #222, #111, #111, #111); */
+		/* border: 20px solid #A8998E; */
+	}
+
+	.entrenamientos-top {
+		position: absolute;
+		width: 100%; /* Cambiado de 200% a 100% */
+		height: 50px;
+		text-align: center;
+		font-size: 10rem;
+		text-transform: uppercase;
+		opacity: 0.05;
+		top: -70px;
+		z-index: -1;
+	}
+
+	.entrenamientos-bottom {
+		position: absolute;
+		width: 100%; /* Cambiado de 200% a 100% */
+		height: 50px;
+		text-align: center;
+		font-size: 10rem;
+		text-transform: uppercase;
+		opacity: 0.05;
+		bottom: 150px;
+		z-index: -1;
+	}
+
+	.titulo-sup,
+	.titulo-end {  
+		line-height: 1;  
+	}
+
+	.logo-container {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+	}
+
+	.hexagon-wrapper {
+		position: absolute;
+		z-index: 1;
+	}
+
+	.hexagon {
+		position: relative;
+		width: 16vw;
+		height: 18vw;
+		max-width: 400px;
+		max-height: 400px;
+		background-color: #B4CD02; /* Verde Eden */
+		clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+		opacity: 0.7;
+		transform: rotate(0deg);
+		animation: pulse 3s infinite ease-in-out;
+		box-shadow: 0 0 20px rgba(180, 205, 2, 0.5);
+	}
+	
+	@keyframes pulse {
+		0% {
+			transform: scale(1);
+			opacity: 0.7;
+		}
+		50% {
+			transform: scale(1.05);
+			opacity: 0.8;
+		}
+		100% {
+			transform: scale(1);
+			opacity: 0.7;
+		}
+	}
+
+	.logo {
+		position: relative;
+		z-index: 2;
+		width: 30%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.title-hero {
+		font-size: 5rem;
+		text-transform: uppercase;
+		margin-top: 350px;
+		text-wrap: pretty;
+		text-align: center;
+	}
+
+	@media (max-width: 1024px) {
+		.title-hero {
+			font-size: 4rem;
+			margin-top: 400px;
+		}
+		
+		.hexagon {
+			width: 16vw;
+			height: 18vw;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.logo {
+			width: 70%;
+		}
+		.entrenamientos-top {
+			font-size: 5rem;
+			top: -30px;
+		}
+		.entrenamientos-bottom {
+			font-size: 5rem;
+			bottom: 60px;
+		}
+
+		.title-hero {
+			font-size: 3rem;
+			margin-top: 350px;
+			padding: 0 15px;
+		}
+		
+		.hexagon {
+			width: 40vw;
+			height: 46vw;
+			max-width: 280px;
+			max-height: 280px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.title-hero {
+			font-size: 2.5rem;
+			margin-top: 300px;
+			padding: 0 10px;
+			line-height: 1.2;
+		}
+		
+		.hexagon {
+			width: 38vw;
+			height: 42vw;
+			max-width: 220px;
+			max-height: 220px;
+		}
+	}
+	/* Se eliminaron las animaciones del SVG verde */
+</style>
+
+
+<script>
+	import { gsap } from 'gsap';
+	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+	gsap.registerPlugin(ScrollTrigger);
+
+	// Deshabilitar el scroll al inicio
+	// document.body.style.overflow = 'hidden';
+
+	// document.addEventListener('DOMContentLoaded', () => {
+		
+		// gsap.from('.logo', {
+		// 	opacity: 0.15,
+		// 	duration: 3,
+		// })
+		// let animacionLogo = gsap.from('.logo', {
+		// 	// opacity: 0.15,
+		// 	y: -800,
+		// 	duration: 3
+		// })
+
+		let animacioneLogo2 =  gsap.from('.entrenamientos-top', {
+			opacity: 1,
+			x: -100,
+			duration: 3,
+		})
+
+		let animacioneLogo3 = gsap.from('.entrenamientos-bottom', {
+			opacity: 1,
+			x: 100,
+			duration: 3,
+		})
+
+		let header = gsap.timeline({
+			scrollTrigger: {
+				trigger: '.hero',
+				// markers: true,
+				scrub: 8,
+				pin: true,
+				end: 'bottom top',
+				pinSpacing: false
+				
+			}
+		})
+
+		// header.to('.logo', {
+		// 	scale: 0.5,
+		// })
+
+
+		// Habilitar el scroll una vez que todas las animaciones hayan terminado
+		Promise.all([animacionLogo]).then(() => {
+			document.body.style.overflow = 'auto';
+			document.body.style.overflowX = 'hidden';
+		});
+	
+	// })
+</script> 

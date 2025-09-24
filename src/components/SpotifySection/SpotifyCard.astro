@@ -1,0 +1,24 @@
+---
+---
+
+<div class="spotify-content">
+    <slot />
+</div>
+
+<style>
+    .spotify-content {
+        
+        margin: 15px auto;
+
+        width: 30%;
+        height: 352px;
+        /* max-width: 600px; */
+
+    }
+
+    @media (max-width: 768px) {
+        .spotify-content {
+            width: 100%;
+        }
+    }
+</style>

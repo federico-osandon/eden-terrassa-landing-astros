@@ -1,0 +1,104 @@
+---
+import SectionTitle from "../Section-Title/Section-Title.astro"
+import CategoryButton from "./CategoryButton.astro"
+
+const entrenamientos = [
+	{id: 1, name: 'Entrenamientos Presenciales', description: 'Entrenamientos presenciales en el local Eden Terrassa'},
+	{id: 2, name: 'Adán', description: 'Entrenamientos para niños y niñas de 6 a 12 años'},
+	{id: 3, name: 'Entrenamientos Maestros de niños', description: 'Entrenamientos para maestros de niños de 6 a 12 años'},
+	{id: 4, name: 'Recursos de Formación Infantil', description: 'Recursos de formación para maestros de niños de 6 a 12 años'},
+	{id: 5, name: 'Entrenamientos Equipos de alabanzas', description: 'Entrenamientos para equipos de alabanzas'},
+	{id: 6, name: 'Entrenamientos Finanzas', description: 'Entrenamientos para el área de finanzas'},
+	{id: 7, name: 'Entrenamientos Adolecentes', description: 'Entrenamientos para adolecentes de 13 a 17 años'},
+	{id: 8, name: 'Entrenamientos Liderazgo', description: 'Entrenamientos para líderes'},
+]
+---
+
+<section class="sectionEntrenamientos">
+	<SectionTitle>
+		Entrenamientos
+	</SectionTitle>
+	<div class="entrenamientos-category-content">
+		{ entrenamientos.map(entrenamiento => (
+			<CategoryButton>
+				{entrenamiento.name}
+			</CategoryButton>
+		))}		
+	</div>
+</section>
+
+<style>
+	.sectionEntrenamientos {
+		width: 100%;
+		min-height: 100vh; /* Cambiado de height fijo a min-height */
+
+		padding: 100px 25px 50px 25px; /* Aumentado el padding inferior */
+
+		/* color: #f7f7f7; */
+		background-color: #333;
+		position: relative;
+
+	}
+
+
+
+	.entrenamientos-category-content {
+		width: 100%;
+		min-height: 70%; /* Cambiado de height fijo a min-height */
+
+		padding: 20px 0; /* Añadido padding vertical */
+		/* border: 4px solid #78866b;
+		border-radius: 10px; */
+
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center; /* Cambiado a center para mejor distribución */
+		align-items: flex-start; /* Cambiado a flex-start para mejor alineación vertical */
+		gap: 15px; /* Añadido gap para espaciado uniforme */
+	}
+	@media (max-width: 1024px) {
+		.entrenamientos-category-content {
+			padding: 15px 0;
+			gap: 12px;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.sectionEntrenamientos {
+			padding: 80px 15px 40px 15px; /* Reducido el padding en móviles */
+		}
+
+		.entrenamientos-category-content {
+			justify-content: center;
+			flex-direction: column;
+			gap: 10px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.sectionEntrenamientos {
+			padding: 60px 10px 30px 10px; /* Aún más reducido para móviles pequeños */
+		}
+	}
+</style>
+
+
+<script>
+	 import { gsap } from 'gsap'
+	 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+	 gsap.registerPlugin(ScrollTrigger)
+
+	 let categories = gsap.timeline({
+	 		scrollTrigger: {
+	 			trigger: '.sectionEntrenamientos',
+	 			// markers: true,
+	 			scrub: 10,
+	 			pin: true,
+	 			end: 'bottom top',
+	 			pinSpacing: false,
+	 		}
+	 	})
+
+
+</script>

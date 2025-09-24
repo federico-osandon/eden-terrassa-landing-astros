@@ -1,0 +1,161 @@
+---
+import SectionTitle from "../Section-Title/Section-Title.astro"
+import YoutubeCard from "./YoutubeCard.astro"
+---
+
+<section class="youtube-section">
+	<SectionTitle>
+		Youtube
+	</SectionTitle>
+	<div class="youtube-content-card">
+		<div class="youtube-card">
+			<img class="youtube-image" src="/youtube/posicionados.png" alt="posicionado" loading="lazy">
+			<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/L9fUND3J0ro?si=57ahdH_ew6kT5oGs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe> -->
+		</div>
+	</div>
+</section>
+
+<style>
+	.youtube-section {
+		width: 100%;
+		min-height: 100vh;
+
+		padding: 100px 25px 20px 25px;
+
+		color: #f7f7f7;
+		background-color: #333;
+
+		position: relative;
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: row;
+	}
+
+	.youtube-content-card {
+		width: 100%;
+		height: 90%;
+
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		
+	}
+
+
+	.youtube-card {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        
+        margin: 15px auto;
+
+        width: 45%;
+        height: 45%;
+        /* max-width: 600px; */
+
+    }
+
+	
+
+	.youtube-image {
+        width: 560px;
+        height: 315px;
+		object-fit: cover; /* Cambiado a cover para mejor ajuste */
+        max-width: 100%; /* Asegura que no exceda el ancho del contenedor */
+		cursor: pointer;
+
+		/* border-radius: 20px; */
+		transition: opacity 3s ease;
+        border: 3px solid #B4CD02; /* Línea verde alrededor de la imagen */
+        box-sizing: border-box; /* Incluye el borde en el cálculo del tamaño */
+    }
+
+	
+	.fade-out {
+		/* opacity: 0;  */
+		transition: opacity 1s ease;
+
+	}
+
+	@media (max-width: 767px) {
+		.youtube-image {
+			width: 95%;
+            height: auto; /* Altura automática para mantener la proporción */
+            aspect-ratio: 16/9; /* Mantiene la proporción 16:9 */
+		}
+	}
+
+	@media (max-width: 480px) {
+		.youtube-image {
+			width: 100%;
+            border-width: 2px; /* Borde más delgado en móviles pequeños */
+		}
+	}
+
+	@media (min-width: 1191px) and (max-width: 1600px){
+		.youtube-card {
+			width: 50%;
+		}
+	}
+
+
+    @media (max-width: 1190px) {
+        .youtube-card {
+            width: 100%;
+        }
+    }
+
+</style>
+<script>
+	
+		const videos = [
+			{
+				title: 'Posicionados',
+				src: 'https://www.youtube.com/embed/L9fUND3J0ro?si=57ahdH_ew6kT5oGs',
+				alt: 'posicionado'
+			},
+			{
+				title: 'Árbol de la vida',
+				src: 'https://www.youtube.com/embed/agnqJMbDY6E?si=euIPys0ntGksnrzu',
+				alt: 'arbol vida'
+			},
+			{
+				title: 'Reflejo',
+				src: 'https://www.youtube.com/embed/Iu_meZtFpFQ?si=YytWLWXZ42gI2jip',
+				alt: 'Reflejo'
+			}
+		]
+
+		const youtubeImages = document.querySelectorAll('.youtube-image')
+		// const youtubeContent = document.querySelectorAll('.youtube-content')
+
+		youtubeImages.forEach(image => {
+			if (image instanceof HTMLImageElement) {
+
+				image.addEventListener('click', function() {
+					const videoIndex = Array.from(youtubeImages).indexOf(image)
+					const video = videos[videoIndex]
+					const iframe = document.createElement('iframe')
+					iframe.width = '560'
+					iframe.height = '315'
+					iframe.src = `${video.src}&autoplay=1`
+					//   iframe.frameborder = '0';
+					iframe.allowFullscreen = true
+					// iframe.classList.add('youtube-iframe')
+					// iframe.loading = 'lazy'
+
+					// Agregar transición de opacidad a la imagen
+					image.classList.add('fade-out')
+					
+					setTimeout(() => {
+						image.parentNode.replaceChild(iframe, image)
+						// image.classList.remove('fade-out')
+					}, 1000)
+					
+				})
+			}
+		})
+	
+</script>
