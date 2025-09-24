@@ -16,14 +16,24 @@ const entrenamientos = [
 
 <section class="sectionEntrenamientos">
 	<SectionTitle>
-		Entrenamientos
+		Actividades y Reuniones
 	</SectionTitle>
-	<div class="entrenamientos-category-content">
-		{ entrenamientos.map(entrenamiento => (
-			<CategoryButton>
-				{entrenamiento.name}
-			</CategoryButton>
-		))}		
+	<div class="entrenamientos-cards-grid">
+		<div class="entrenamiento-card card-gps">
+			<h3>Entrenamiento GPS</h3>
+			<p class="entrenamiento-horario"><strong>Miércoles 20:00 hs</strong> <span class="modo-online">(Zoom)</span></p>
+			<p class="entrenamiento-desc">Estudio de los conceptos espirituales de la Biblia. Abierto a todos los que deseen profundizar en la fe y el conocimiento bíblico.</p>
+		</div>
+		<div class="entrenamiento-card card-reunion">
+			<h3>Reunión Presencial</h3>
+			<p class="entrenamiento-horario"><strong>Sábados 10:00 hs</strong> <span class="modo-presencial">(Presencial)</span></p>
+			<p class="entrenamiento-desc">Comenzamos compartiendo un café, y a las 11:00 realizamos la reunión principal.</p>
+		</div>
+		<div class="entrenamiento-card card-online-destacada">
+			<h3>Transmisión Online</h3>
+			<p class="entrenamiento-horario"><strong>Sábados 11:00 hs</strong> <span class="modo-online">(Online)</span></p>
+			<p class="entrenamiento-desc">Sigue la reunión en vivo desde cualquier lugar a partir de las 11:00 hs. ¡No te lo pierdas!</p>
+		</div>
 	</div>
 </section>
 
@@ -41,20 +51,108 @@ const entrenamientos = [
 	}
 
 
-
-	.entrenamientos-category-content {
+	
+	.entrenamientos-cards-grid {
 		width: 100%;
-		min-height: 70%; /* Cambiado de height fijo a min-height */
-
-		padding: 20px 0; /* Añadido padding vertical */
-		/* border: 4px solid #78866b;
-		border-radius: 10px; */
-
+		max-width: 1300px;
+		margin: 0 auto;
 		display: flex;
+		flex-direction: row;
 		flex-wrap: wrap;
-		justify-content: center; /* Cambiado a center para mejor distribución */
-		align-items: flex-start; /* Cambiado a flex-start para mejor alineación vertical */
-		gap: 15px; /* Añadido gap para espaciado uniforme */
+		justify-content: space-around;
+		align-items: center;
+		gap: 2.5rem;
+		margin-top: 5.5rem;
+		height: 100%;
+	}
+	.entrenamiento-card {
+		background: #232323;
+		border: 3px solid #B4CD02;
+		border-radius: 2rem;
+		box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+		padding: 2.2rem 2rem 1.5rem 2rem;
+		min-width: 280px;
+		max-width: 370px;
+		flex: 1 1 0;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		min-height: 340px;
+		height: 100%;
+		transition: box-shadow 0.2s, border 0.2s;
+	}
+	.entrenamiento-card h3 {
+		color: #B4CD02;
+		font-size: 2rem;
+		margin-bottom: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.02em;
+	}
+	.entrenamiento-horario {
+		font-size: 1.15rem;
+		margin-bottom: 0.7rem;
+		color: #fff;
+	}
+	.modo-online {
+		background: rgba(180,205,2,0.18);
+		color: #B4CD02;
+		border-radius: 0.5em;
+		padding: 0.08em 0.35em;
+		font-weight: 700;
+		margin-left: 0.5em;
+	}
+	.modo-presencial {
+		background: rgba(180,205,2,0.10);
+		color: #B4CD02;
+		border-radius: 0.5em;
+		padding: 0.08em 0.35em;
+		font-weight: 700;
+		margin-left: 0.5em;
+	}
+	.entrenamiento-desc {
+		color: #eaeaea;
+		font-size: 1.05rem;
+		margin-bottom: 0;
+		margin-top: 0.5rem;
+		line-height: 1.5;
+	}
+	/* Card destacada para online */
+	.card-online-destacada {
+		background: linear-gradient(120deg, #B4CD02 0%, #eaf7b1 100%);
+		color: #232323;
+		border: 3px solid #B4CD02;
+		box-shadow: 0 6px 32px rgba(180,205,2,0.18);
+		position: relative;
+		z-index: 2;
+	}
+	.card-online-destacada h3,
+	.card-online-destacada .entrenamiento-horario {
+		color: #232323;
+	}
+	.card-online-destacada .entrenamiento-desc {
+		color: #232323;
+	}
+	.card-online-destacada .modo-online {
+		background: #232323;
+		color: #B4CD02;
+	}
+	@media (max-width: 900px) {
+		.entrenamientos-cards-grid {
+			flex-direction: column;
+			align-items: center;
+			gap: 1.5rem;
+		}
+		.entrenamiento-card {
+			min-width: 90vw;
+			max-width: 98vw;
+			padding: 1.5rem 1rem 1.2rem 1rem;
+		}
+		.entrenamiento-card h3 {
+			font-size: 1.4rem;
+		}
+		.entrenamiento-desc {
+			font-size: 0.98rem;
+		}
 	}
 	@media (max-width: 1024px) {
 		.entrenamientos-category-content {
@@ -84,21 +182,21 @@ const entrenamientos = [
 
 
 <script>
-	 import { gsap } from 'gsap'
-	 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+	// import { gsap } from 'gsap'
+	// import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-	 gsap.registerPlugin(ScrollTrigger)
+	// gsap.registerPlugin(ScrollTrigger)
 
-	 let categories = gsap.timeline({
-	 		scrollTrigger: {
-	 			trigger: '.sectionEntrenamientos',
-	 			// markers: true,
-	 			scrub: 10,
-	 			pin: true,
-	 			end: 'bottom top',
-	 			pinSpacing: false,
-	 		}
-	 	})
+	// let categories = gsap.timeline({
+	// 	scrollTrigger: {
+	// 		trigger: '.sectionEntrenamientos',
+	// 		// markers: true,
+	// 		scrub: 10,
+	// 		pin: true,
+	// 		end: 'bottom top',
+	// 		pinSpacing: false,
+	// 	}
+	// })
 
 
 </script>
