@@ -4,7 +4,10 @@ import MenuHamb from "./MenuHamb.astro"
 <header>
 	<nav>
 		<div class="brand-content">
-			  <a class="brand" href="/" aria-current="page">EDEN</a>
+				<!-- <a class="brand" href="/" aria-current="page">EDEN</a> -->
+				<a class="brand" href="/" aria-current="page">
+					<img src="/eden-logo.svg" class="Logo-eden" alt="Logo-eden" />
+				</a>
 		</div>
 		<div class="menu-hamb-content">
 			  <!-- <img class="menu-hamb" src="/menu-hamb.svg" alt="menu" /> -->
@@ -67,5 +70,9 @@ import MenuHamb from "./MenuHamb.astro"
 		cursor: pointer;
 	}
 	
+
+	.Logo-eden {
+		width: 100px;
+	}
 </style>
 	

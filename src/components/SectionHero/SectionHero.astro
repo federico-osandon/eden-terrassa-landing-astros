@@ -3,16 +3,31 @@ import GradientCircles from '../GradientCircles/GradientCircles.astro';
 ---
 
 <section class="hero">
-    <GradientCircles class="hero-circles" variant="alt2" />
-    <div class="entrenamientos-top">
-        <h1 class="titulo-sup">ENTRENAMIENTOS</h1>
-    </div>
-    <div class="logo">
-        <img src="/eden-logo.svg" alt="Logo-eden" />
+	<GradientCircles class="hero-circles" variant="alt2" />
+	<div class="entrenamientos-top">
+		<h1 class="titulo-sup">IGLESIA</h1>
 	</div>
-    <div class="entrenamientos-bottom">
-        <h1 class="titulo-end">ENTRENAMIENTOS</h1>
-    </div>
+	<!-- <div class="logo"> -->
+		<!-- <img src="/eden-logo.svg" alt="Logo-eden" /> -->
+	<!-- </div> -->
+	<div class="hero-text-content">
+		<div>
+					   <p class="hero-p">
+						   <span class="resaltado resaltado-grande">Iglesia Edén Terrassa</span><br>
+						   <span class="resaltado">Ser</span> una comunidad ministerial<br>
+						   En <span class="resaltado">constante</span> crecimineto<br>
+						   que <span class="resaltado">colabora</span> con la iglesia global
+					   </p>
+		</div>
+	       <div class="hero-images-stack">
+		       <img src="images/hero/hero-image.webp" class="main-img"/>
+		       <img src="images/hero/hero-image.webp" class="img-stack img-stack-1"/>
+		       <img src="images/hero/hero-image.webp" class="img-stack img-stack-2"/>
+	       </div>
+	</div>
+	<div class="entrenamientos-bottom">
+		<h1 class="titulo-end">TERRASSA</h1>
+	</div>
 </section>
 
 <style>
@@ -45,6 +60,81 @@ import GradientCircles from '../GradientCircles/GradientCircles.astro';
 		/* background: linear-gradient(to right, #111, #111, #111,#222, #222, #333, #333, #333, #333, #222, #222, #111, #111, #111); */
 		/* border: 20px solid #A8998E; */
 	}
+
+	.hero-text-content {
+		   display: flex;
+		   justify-content: center;
+		   align-items: center;
+		   width: 100%;
+		   gap: 2rem;
+	   }
+
+	.hero-text-content > div {
+		   flex: 1 1 0;
+		   max-width: 50%;
+		   display: flex;
+		   flex-direction: column;
+		   align-items: center;
+		   justify-content: center;
+	   }
+
+	.hero-images-stack {
+	position: relative;
+	width: 660px;
+	height: 380px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	}
+			 /* Responsive: ocultar imágenes en móvil */
+			 @media (max-width: 900px) {
+				 .hero-images-stack {
+					 display: none !important;
+				 }
+				 .hero-text-content {
+					 flex-direction: column;
+					 gap: 1.5rem;
+				 }
+				 .hero-text-content > div {
+					 max-width: 100%;
+				 }
+				 .hero-p {
+					 font-size: 1.3rem;
+					 max-width: 98vw;
+				 }
+			 }
+
+       .hero-images-stack img {
+	       position: absolute;
+	       width: 320px;
+	       height: 320px;
+	       object-fit: cover;
+	       border-radius: 32px;
+	       border: 6px solid #B4CD02;
+	       box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+	       background: #fff;
+	       transition: box-shadow 0.2s;
+       }
+
+       .hero-images-stack .main-img {
+	       left: 0;
+	       top: 40px;
+	       z-index: 2;
+       }
+       .hero-images-stack .img-stack.img-stack-1 {
+	       left: 200px;
+	       top: 0px;
+	       z-index: 3;
+	       opacity: 1;
+	       filter: blur(0.2px) grayscale(8%);
+       }
+       .hero-images-stack .img-stack.img-stack-2 {
+	       left: 360px;
+	       top: 80px;
+	       z-index: 1;
+	       opacity: 1;
+	       filter: blur(0.5px) grayscale(15%);
+       }
 
 	.entrenamientos-top {
 		position: absolute;
@@ -133,6 +223,34 @@ import GradientCircles from '../GradientCircles/GradientCircles.astro';
 		text-wrap: pretty;
 		text-align: center;
 	}
+
+       .hero-p {
+	       font-size: 2.5rem;
+	       /* text-transform: uppercase; */
+	       font-style: italic;
+	       font-weight: 600;
+	       text-wrap: pretty;
+	       text-align: center;
+	       transform: rotate(-8deg);
+	       transform-origin: center;
+	       margin: 0 auto;
+	       max-width: 90%;
+       }
+
+       .resaltado {
+	       background: rgba(180, 205, 2, 0.18);
+	       color: #B4CD02;
+	       border-radius: 0.5em;
+	       padding: 0.08em 0.35em;
+	       font-weight: 700;
+	       box-decoration-break: clone;
+	       -webkit-box-decoration-break: clone;
+	       transition: background 0.2s, color 0.2s;
+       }
+
+       .resaltado-grande {
+	       font-size: 1.35em;
+       }
 
 	@media (max-width: 1024px) {
 		.title-hero {
