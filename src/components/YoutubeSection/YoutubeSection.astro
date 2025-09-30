@@ -2,12 +2,14 @@
 import SectionTitle from "../Section-Title/Section-Title.astro";
 import YoutubeCard from "./YoutubeCard.astro";
 import GradientCircles from '../GradientCircles/GradientCircles.astro';
+import StyledSectionTitle from '../StyledSectionTitle/StyledSectionTitle.astro';
 ---
 
 <section class="youtube-section">
 	<div class="youtube-gradient-overlay">
 		<GradientCircles class="youtube-circles" variant="alt2" />
 	</div>
+	<StyledSectionTitle title="No te lo pierdas" />
 	<div class="youtube-live-header">
 		<h2 class="youtube-live-title">
 			<span class="youtube-icon">
@@ -69,6 +71,7 @@ import GradientCircles from '../GradientCircles/GradientCircles.astro';
 		0% { box-shadow: 0 0 8px #ff0000a0; opacity: 1; }
 		100% { box-shadow: 0 0 18px #ff0000; opacity: 0.7; }
 	}
+	
 	.youtube-live-header {
 		width: 100%;
 		display: flex;

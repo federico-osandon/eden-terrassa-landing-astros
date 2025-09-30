@@ -2,6 +2,7 @@
 import SectionTitle from "../Section-Title/Section-Title.astro"
 import CategoryButton from "./CategoryButton.astro"
 import GradientCircles from '../GradientCircles/GradientCircles.astro';
+import StyledSectionTitle from '../StyledSectionTitle/StyledSectionTitle.astro';
 
 const entrenamientos = [
 	{id: 1, name: 'Entrenamientos Presenciales', description: 'Entrenamientos presenciales en el local Eden Terrassa'},
@@ -19,6 +20,7 @@ const entrenamientos = [
 	<div class="entrenamientos-gradient-overlay">
 		<GradientCircles class="entrenamientos-circles" variant="alt2" />
 	</div>
+	<StyledSectionTitle title="Tenemos para ofrecerte" />
 	<SectionTitle>
 		Actividades y Reuniones
 	</SectionTitle>
@@ -80,7 +82,7 @@ const entrenamientos = [
 	}
 	.entrenamiento-card {
 		background: #232323;
-		border: 3px solid #B4CD02;
+		border: 3px solid #f7f7f7;
 		border-radius: 2rem;
 		box-shadow: 0 4px 24px rgba(0,0,0,0.10);
 		padding: 2.2rem 2rem 1.5rem 2rem;
@@ -133,7 +135,7 @@ const entrenamientos = [
 	.card-online-destacada {
 		background: linear-gradient(120deg, #B4CD02 0%, #eaf7b1 100%);
 		color: #232323;
-		border: 3px solid #B4CD02;
+		border: 3px solid #f7f7f7;
 		box-shadow: 0 6px 32px rgba(180,205,2,0.18);
 		position: relative;
 		z-index: 2;
