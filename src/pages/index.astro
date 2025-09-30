@@ -5,9 +5,11 @@ import Hero from '../components/SectionHero/SectionHero.astro';
 import CategoryEntrenamientoSection from '../components/CategoryEntrenamientosSection/CategoryEntrenamientosSection.astro'
 import EventosSection from '../components/EventosSection/EventosSection.astro'
 import SpotifySection from '../components/SpotifySection/SpotifySection.astro'
+import DondeEstamosSection from '../components/DondeEstamosSection/DondeEstamosSection.astro'
 import YoutubeSection from '../components/YoutubeSection/YoutubeSection.astro'
 import Footer from '../components/Footer/Footer.astro'
 import GradientCircles from '../components/GradientCircles/GradientCircles.astro';
+import SuscripcionSection from '../components/SuscripcionSection/SuscripcionSection.astro';
 ---
 <Layout title="Welcome to Astro.">	
 	<Navbar />
@@ -23,11 +25,15 @@ import GradientCircles from '../components/GradientCircles/GradientCircles.astro
 		</div>
 		<div class="section-container">
 			<GradientCircles class="section-circles section-circles-3" variant="default" />
-			<SpotifySection />
+			<DondeEstamosSection />
 		</div>
 		<div class="section-container">
 			<GradientCircles class="section-circles section-circles-4" variant="alt1" />
 			<YoutubeSection />
+		</div>
+		<div class="section-container">
+			<GradientCircles class="section-circles section-circles-4" variant="alt1" />
+			<SuscripcionSection />
 		</div>
 	</main>
 	<Footer />

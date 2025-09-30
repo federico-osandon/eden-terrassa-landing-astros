@@ -1,0 +1,145 @@
+---
+import GradientCircles from '../GradientCircles/GradientCircles.astro';
+---
+<section class="suscripcion-section">
+    <div class="suscripcion-gradient-overlay">
+        <GradientCircles class="suscripcion-circles" variant="alt2" />
+    </div>
+    <div class="suscripcion-content">
+        <div class="suscripcion-info">
+            <h2 class="suscripcion-title"><span class="suscripcion-accede">ACCEDE GRATIS</span> a un curso online</h2>
+            <p class="suscripcion-desc">
+                Suscríbete y recibe acceso exclusivo a nuestro mini-curso sobre <strong>fundamentos bíblicos</strong>, <strong>liderazgo</strong> y <strong>familia</strong>. ¡Un recurso digital pensado para tu crecimiento espiritual!
+            </p>
+        </div>
+        <form class="suscripcion-form">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre" />
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="Tu email" />
+            <button type="submit">Quiero mi acceso gratis</button>
+        </form>
+    </div>
+</section>
+
+<style>
+.suscripcion-section {
+    width: 100%;
+    min-height: 60vh;
+    background: linear-gradient(120deg, #fff 0%, #f7f7f7 60%, #e0e0e0 90%, #444 100%);
+    padding: 80px 25px 40px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+.suscripcion-gradient-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+.suscripcion-content {
+    position: relative;
+    z-index: 2;
+}
+.suscripcion-content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+}
+.suscripcion-info {
+    flex: 1 1 0;
+    max-width: 480px;
+}
+.suscripcion-title {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #55603d;
+
+    .suscripcion-accede {
+        text-transform: uppercase;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+    }
+    margin-bottom: 1.2rem;
+    letter-spacing: 0.04em;
+}
+.suscripcion-desc {
+    font-size: 1.15rem;
+    color: #232323;
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+.suscripcion-form {
+    flex: 1 1 0;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1.2rem;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+}
+.suscripcion-form label {
+    align-self: flex-start;
+    font-weight: 600;
+    color: #232323;
+    margin-bottom: 0.2rem;
+}
+.suscripcion-form input {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.7em 0.2em;
+    border: none;
+    border-bottom: 2px solid #B4CD02;
+    background: none;
+    color: #232323;
+    margin-bottom: 0.5rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+.suscripcion-form input:focus {
+    border-bottom: 2.5px solid #78866b;
+}
+.suscripcion-form button {
+    background: linear-gradient(120deg, #B4CD02 0%, #eaf7b1 100%);
+    color: #232323;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 1.2em;
+    padding: 0.7em 2em;
+    cursor: pointer;
+    box-shadow: 0 2px 12px #b4cd02a0;
+    transition: background 0.2s, color 0.2s;
+}
+.suscripcion-form button:hover {
+    background: #B4CD02;
+    color: #fff;
+}
+@media (max-width: 900px) {
+    .suscripcion-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+    .suscripcion-info, .suscripcion-form {
+        max-width: 98vw;
+        width: 100%;
+    }
+    .suscripcion-form {
+        align-items: stretch;
+    }
+}
+</style>

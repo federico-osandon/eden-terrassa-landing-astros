@@ -1,0 +1,131 @@
+---
+---
+<section class="sectionDondeEstamos">
+    <h2 class="donde-title">¿Dónde nos encuentras?</h2>
+    <div class="donde-grid">
+        <div class="donde-card">
+            <img src="/images/hero/hero-image.webp" alt="Terrassa" class="donde-img" />
+            <div class="donde-info">
+                <h3>Terrassa</h3>
+                <p>Carrer de la Mare de Déu dels Àngels, 32, 08221 Terrassa, Barcelona</p>
+            </div>
+        </div>
+        <div class="donde-card">
+            <img src="/images/hero/reunion.webp" alt="Blanes" class="donde-img" />
+            <div class="donde-info">
+                <h3>Blanes</h3>
+                <p>Carrer de la Costa Brava, 12, 17300 Blanes, Girona</p>
+            </div>
+        </div>
+        <div class="donde-card">
+            <img src="/images/hero/portada-vivo.webp" alt="O Barco" class="donde-img" />
+            <div class="donde-info">
+                <h3>O Barco</h3>
+                <p>Rúa Progreso, 45, 32300 O Barco de Valdeorras, Ourense</p>
+            </div>
+        </div>
+        <div class="donde-card">
+            <img src="/images/hero/hero-image.webp" alt="Rubí" class="donde-img" />
+            <div class="donde-info">
+                <h3>Rubí</h3>
+                <p>Carrer de la Indústria, 7, 08191 Rubí, Barcelona</p>
+            </div>
+        </div>
+        <div class="donde-card">
+            <img src="/images/hero/reunion.webp" alt="Savaterra de Miño" class="donde-img" />
+            <div class="donde-info">
+                <h3>Savaterra de Miño</h3>
+                <p>Av. de Galicia, 21, 36450 Salvaterra de Miño, Pontevedra</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.sectionDondeEstamos {
+    width: 100%;
+    min-height: 70vh;
+    padding: 80px 25px 40px 25px;
+    background: linear-gradient(120deg, #B4CD02 0%, #eaf7b1 100%);
+    position: relative;
+    color: #232323;
+}
+.donde-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 2.5rem;
+    color: #232323;
+    letter-spacing: 0.04em;
+    text-shadow: 0 2px 12px #b4cd02a0;
+}
+.donde-grid {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2.5rem;
+}
+.donde-card {
+    background: #fff;
+    border-radius: 2rem;
+    box-shadow: 0 4px 24px rgba(180,205,2,0.18);
+    width: 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    border: 3px solid #B4CD02;
+    transition: box-shadow 0.2s, border 0.2s;
+    position: relative;
+}
+.donde-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 2px solid #B4CD02;
+}
+.donde-info {
+    width: 100%;
+    padding: 1.2rem 1rem 1rem 1rem;
+    color: #232323;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.donde-info h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #B4CD02;
+    margin: 0 0 0.3rem 0;
+    text-shadow: 0 2px 8px #b4cd02a0;
+}
+.donde-info p {
+    font-size: 1rem;
+    margin: 0;
+    font-weight: 500;
+}
+@media (max-width: 1100px) {
+    .donde-grid {
+        gap: 1.2rem;
+    }
+    .donde-card {
+        width: 95vw;
+        max-width: 340px;
+    }
+}
+@media (max-width: 900px) {
+    .donde-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+    .donde-card {
+        width: 90vw;
+        max-width: 98vw;
+    }
+}
+</style>
