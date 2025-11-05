@@ -7,20 +7,53 @@ import StyledSectionTitle from '../StyledSectionTitle/StyledSectionTitle.astro';
         <GradientCircles class="suscripcion-circles" variant="alt2" />
     </div>
     <StyledSectionTitle title="Tenemos regalos" color="#55603d" />
-    <div class="suscripcion-content">
+    <div class="suscripcion-content" >
         <div class="suscripcion-info">
             <h2 class="suscripcion-title"><span class="suscripcion-accede">ACCEDE GRATIS</span> a un curso online</h2>
             <p class="suscripcion-desc">
                 Suscríbete y recibe acceso exclusivo a nuestro mini-curso sobre <strong>fundamentos bíblicos</strong>, <strong>liderazgo</strong> y <strong>familia</strong>. ¡Un recurso digital pensado para tu crecimiento espiritual!
             </p>
+            <!-- <a href="https://form.typeform.com/to/kr5FS8Sp">Accede a tu regalo</a> -->
         </div>
-        <form class="suscripcion-form">
+        <form class="suscripcion-form" enctype="multipart/form-data">
             <label for="nombre">Nombre</label>
-            <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre" />
+            <input type="text" id="your-name" name="your-name" required placeholder="Tu nombre" />
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" required placeholder="Tu email" />
+            <input type="email" id="your-email" name="your-email" required placeholder="Tu email" />
+            <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-fID-pTAG-oX" />
             <button type="submit">Accede a tu regalo</button>
         </form>
+        <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const form = document.querySelector('.suscripcion-form');
+          if (!form) return;
+
+          form.addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            const formData = new FormData(form);
+
+            try {
+              const response = await fetch('https://back.entrenamientoseden.com/wp-json/contact-form-7/v1/contact-forms/91/feedback', {
+                method: 'POST',
+                body: formData
+              });
+
+              const result = await response.json();
+
+              if (response.ok && result.status === 'mail_sent') {
+                alert('¡Gracias por suscribirte! Revisa tu correo.');
+                form.reset();
+              } else {
+                alert('Hubo un error: ' + (result.message || 'Inténtalo de nuevo.'));
+              }
+            } catch (error) {
+              alert('Error de red o servidor. Intenta más tarde.');
+              console.error(error);
+            }
+          });
+        });
+        </script>
     </div>
 </section>
 
@@ -55,7 +88,7 @@ import StyledSectionTitle from '../StyledSectionTitle/StyledSectionTitle.astro';
     margin: 30px auto;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: flex-start;
     gap: 3rem;
     position: relative;
@@ -90,6 +123,7 @@ import StyledSectionTitle from '../StyledSectionTitle/StyledSectionTitle.astro';
 .suscripcion-form {
     flex: 1 1 0;
     max-width: 400px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -122,14 +156,18 @@ import StyledSectionTitle from '../StyledSectionTitle/StyledSectionTitle.astro';
     border-bottom: 2.5px solid #78866b;
 }
 .suscripcion-form button {
+/*a {*/
     background: linear-gradient(120deg, #B4CD02 0%, #eaf7b1 100%);
+    /*width: 50%;*/
     color: #232323;
     font-weight: 700;
     font-size: 1.1rem;
     border: none;
     border-radius: 1.2em;
+    margin-top: 0.5rem;
     padding: 0.7em 2em;
     cursor: pointer;
+    text-decoration: none;
     box-shadow: 0 2px 12px #b4cd02a0;
     transition: background 0.2s, color 0.2s;
 }
