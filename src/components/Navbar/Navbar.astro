@@ -6,13 +6,13 @@ import MenuHamb from "./MenuHamb.astro"
 		<div class="brand-content">
 				<!-- <a class="brand" href="/" aria-current="page">EDEN</a> -->
 				<a class="brand" href="/" aria-current="page">
-					<img src="/eden-logo.svg" class="Logo-eden" alt="Logo-eden" />
+					<img src="/eden-logo.svg" class="Logo-eden" alt="Logo de Eden Terrassa" />
 				</a>
 		</div>
-		<div class="menu-hamb-content">
+		<button class="menu-hamb-content" aria-label="Abrir menú" id="menu-btn">
 			  <!-- <img class="menu-hamb" src="/menu-hamb.svg" alt="menu" /> -->
 			  <MenuHamb />
-		</div>
+		</button>
 	</nav>
 	
 </header>
@@ -68,6 +68,9 @@ import MenuHamb from "./MenuHamb.astro"
 
 	.menu-hamb-content {
 		cursor: pointer;
+		background: none;
+		border: none;
+		padding: 0;
 	}
 	
 

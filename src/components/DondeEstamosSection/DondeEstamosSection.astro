@@ -15,6 +15,7 @@ import StyledSectionTitle from "../StyledSectionTitle/StyledSectionTitle.astro";
             <div class="donde-info">
                 <h3>Terrassa</h3>
                 <p>Carrer de la Mare de Déu dels Àngels, 32, 08221 Terrassa, Barcelona</p>
+                <a href="https://maps.google.com/?q=Carrer+de+la+Mare+de+Déu+dels+Àngels,+32,+08221+Terrassa,+Barcelona" target="_blank" rel="noopener noreferrer" class="donde-btn">Ver ubicación</a>
             </div>
         </div>
         <div class="donde-card">
@@ -22,6 +23,7 @@ import StyledSectionTitle from "../StyledSectionTitle/StyledSectionTitle.astro";
             <div class="donde-info">
                 <h3>Blanes</h3>
                 <p>Carrer más torrents N 2,2°, Girona CP.: 17300</p>
+                <a href="https://maps.google.com/?q=Carrer+más+torrents+N+2,2°,+Girona+CP.:+17300" target="_blank" rel="noopener noreferrer" class="donde-btn">Ver ubicación</a>
             </div>
         </div>
         <div class="donde-card">
@@ -29,6 +31,7 @@ import StyledSectionTitle from "../StyledSectionTitle/StyledSectionTitle.astro";
             <div class="donde-info">
                 <h3>O Barco de Valdeorras</h3>
                 <p>Avenida Marcelino Suárez 8 bajo. Galicia CP.:32300</p>
+                <a href="https://maps.google.com/?q=Avenida+Marcelino+Suárez+8+bajo.+Galicia+CP.:32300" target="_blank" rel="noopener noreferrer" class="donde-btn">Ver ubicación</a>
             </div>
         </div>
         <div class="donde-card">
@@ -36,6 +39,7 @@ import StyledSectionTitle from "../StyledSectionTitle/StyledSectionTitle.astro";
             <div class="donde-info">
                 <h3>Rubí</h3>
                 <p>Carrer de la Indústria, 7, 08191 Rubí, Barcelona</p>
+                <a href="https://maps.google.com/?q=Carrer+de+la+Indústria,+7,+08191+Rubí,+Barcelona" target="_blank" rel="noopener noreferrer" class="donde-btn">Ver ubicación</a>
             </div>
         </div>
         <div class="donde-card">
@@ -43,6 +47,7 @@ import StyledSectionTitle from "../StyledSectionTitle/StyledSectionTitle.astro";
             <div class="donde-info">
                 <h3>Savaterra de Miño</h3>
                 <p>Av. de Galicia, 21, 36450 Salvaterra de Miño, Pontevedra</p>
+                <a href="https://maps.google.com/?q=Av.+de+Galicia,+21,+36450+Salvaterra+de+Miño,+Pontevedra" target="_blank" rel="noopener noreferrer" class="donde-btn">Ver ubicación</a>
             </div>
         </div>
     </div>
@@ -53,7 +58,7 @@ import StyledSectionTitle from "../StyledSectionTitle/StyledSectionTitle.astro";
     width: 100%;
     min-height: 70vh;
     padding: 80px 25px 40px 25px;
-    background: linear-gradient(120deg, #B4CD02 0%, #eaf7b1 100%);
+    background: linear-gradient(120deg, #fff 0%, #f7f7f7 60%, #e0e0e0 90%, #444 100%);
     position: relative;
     color: #232323;
 }
@@ -76,7 +81,7 @@ import StyledSectionTitle from "../StyledSectionTitle/StyledSectionTitle.astro";
     gap: 2.5rem;
 }
 .donde-card {
-    background: #fff;
+    background: linear-gradient(135deg, #e8e8e8 0%, #d8d8d8 100%);
     border-radius: 2rem;
     box-shadow: 0 4px 24px rgba(180,205,2,0.18);
     width: 340px;
@@ -84,19 +89,22 @@ import StyledSectionTitle from "../StyledSectionTitle/StyledSectionTitle.astro";
     flex-direction: column;
     align-items: center;
     overflow: hidden;
-    border: 3px solid #f7f7f7;
-    transition: box-shadow 0.2s, border 0.2s;
+    transition: box-shadow 0.2s, transform 0.2s;
     position: relative;
+}
+.donde-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(180,205,2,0.25);
 }
 .donde-img {
     width: 100%;
     height: 200px;
     object-fit: cover;
-    border-bottom: 2px solid #B4CD02;
+    border-bottom: 2px solid #55603d;
 }
 .donde-info {
     width: 100%;
-    padding: 1.2rem 1rem 1rem 1rem;
+    padding: 1.2rem 1rem 1.2rem 1rem;
     color: #232323;
     text-align: left;
     display: flex;
@@ -106,14 +114,32 @@ import StyledSectionTitle from "../StyledSectionTitle/StyledSectionTitle.astro";
 .donde-info h3 {
     font-size: 1.3rem;
     font-weight: 700;
-    color: #B4CD02;
+    color: #55603d;
     margin: 0 0 0.3rem 0;
-    text-shadow: 0 2px 8px #b4cd02a0;
+    text-shadow: 0 2px 8px rgba(85,96,61,0.4);
 }
 .donde-info p {
     font-size: 1rem;
-    margin: 0;
+    margin: 0 0 0.8rem 0;
     font-weight: 500;
+}
+.donde-btn {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background: linear-gradient(135deg, #55603d 0%, #6a7a4a 100%);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(85,96,61,0.3);
+}
+.donde-btn:hover {
+    background: linear-gradient(135deg, #6a7a4a 0%, #55603d 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(85,96,61,0.45);
 }
 @media (max-width: 1100px) {
     .donde-grid {

@@ -9,7 +9,7 @@ const { title, class: className = "", color = "#B4CD02" } = Astro.props;
 ---
 
 <div class={`styled-section-header ${className}`}>
-	<span class="styled-section-title" style={`color: ${color}; --title-color: ${color};`}>{title}</span>
+	<h2 class="styled-section-title" style={`color: ${color}; --title-color: ${color};`}>{title}</h2>
 </div>
 
 <style>
