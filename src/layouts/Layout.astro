@@ -1,84 +1,168 @@
 ---
 import Footer from '../components/Footer/Footer.astro'
+
 interface Props {
-	title: string;
+	title?: string;
+	description?: string;
 }
 
-const { title } = Astro.props;
+const {
+	title = "Iglesia Edén Terrassa | Comunidad Ministerial en Crecimiento",
+	description = "Iglesia Edén Terrassa — una comunidad ministerial en constante crecimiento que colabora con la iglesia global. Reuniones presenciales y online en Terrassa, Blanes, Rubí, O Barco de Valdeorras y Salvaterra de Miño.",
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
+const ogImage = new URL("/images/hero/hero-image.webp", Astro.site ?? Astro.url.origin);
 ---
 
 <!doctype html>
 <html lang="es">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Iglesia Edén Terrassa - Una comunidad ministerial en constante crecimiento que colabora con la iglesia global." />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content={description} />
 		<meta name="generator" content={Astro.generator} />
+
+		<!-- Favicon -->
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
 		<title>{title}</title>
-		
-		<!-- Open Graph / Facebook -->
+
+		<!-- Open Graph -->
 		<meta property="og:type" content="website" />
-		<meta property="og:url" content={Astro.url} />
+		<meta property="og:site_name" content="Iglesia Edén Terrassa" />
+		<meta property="og:locale" content="es_ES" />
+		<meta property="og:url" content={canonicalURL} />
 		<meta property="og:title" content={title} />
-		<meta property="og:description" content="Iglesia Edén Terrassa - Una comunidad ministerial en constante crecimiento que colabora con la iglesia global." />
-		<meta property="og:image" content="/images/hero/hero-image.webp" />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={ogImage} />
+		<meta property="og:image:width" content="1080" />
+		<meta property="og:image:height" content="1080" />
+		<meta property="og:image:alt" content="Iglesia Edén Terrassa" />
 
-		<!-- Twitter -->
-		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content={Astro.url} />
-		<meta property="twitter:title" content={title} />
-		<meta property="twitter:description" content="Iglesia Edén Terrassa - Una comunidad ministerial en constante crecimiento que colabora con la iglesia global." />
-		<meta property="twitter:image" content="/images/hero/hero-image.webp" />
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
 
-		<link rel="canonical" href={Astro.url} />
+		<link rel="canonical" href={canonicalURL} />
+
+		<!-- Analytics: sustituye TU_DOMINIO por el dominio real en Plausible -->
+		<!-- <script defer data-domain="eden-terrassa.com" src="https://plausible.io/js/script.js"></script> -->
+
+		<!-- JSON-LD: Organización -->
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "Church",
+			"name": "Iglesia Edén Terrassa",
+			"url": "https://eden-terrassa.com",
+			"logo": "https://eden-terrassa.com/eden-logo.svg",
+			"image": "https://eden-terrassa.com/images/hero/hero-image.webp",
+			"description": "Comunidad ministerial en constante crecimiento que colabora con la iglesia global.",
+			"address": {
+				"@type": "PostalAddress",
+				"streetAddress": "Carrer de la Mare de Déu dels Àngels, 32",
+				"addressLocality": "Terrassa",
+				"postalCode": "08221",
+				"addressRegion": "Barcelona",
+				"addressCountry": "ES"
+			},
+			"sameAs": [
+				"https://www.instagram.com/edenentrenamientos/",
+				"https://www.facebook.com/EdenEntrenamientos/",
+				"https://www.youtube.com/channel/UCtaPyXwR3HV0_lRj6ZlyxIA"
+			],
+			"event": [
+				{
+					"@type": "Event",
+					"name": "Retiro de la Iglesia",
+					"startDate": "2025-11-01",
+					"description": "Tiempo especial de comunión, adoración y crecimiento espiritual.",
+					"location": {
+						"@type": "Place",
+						"name": "Iglesia Edén Terrassa",
+						"address": "Carrer de la Mare de Déu dels Àngels, 32, Terrassa"
+					}
+				},
+				{
+					"@type": "Event",
+					"name": "Encuentro de Líderes",
+					"startDate": "2026-03-01",
+					"description": "Encuentro ministerial especial para líderes y colaboradores.",
+					"location": {
+						"@type": "Place",
+						"name": "Iglesia Edén Terrassa",
+						"address": "Carrer de la Mare de Déu dels Àngels, 32, Terrassa"
+					}
+				}
+			]
+		})} />
 	</head>
 	<body>
+		<!-- Skip to main content (accesibilidad) -->
+		<a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 		<slot />
-	</body>	
+	</body>
 </html>
 <style is:global>
-	
-	@font-face {
-		font-family: 'Chalkboard';
-		/* src: url('/fonts/chalkboard.ttf') format('truetype'); */
-		font-weight: normal;
-		font-style: normal;
-	}
 
 	* {
 		box-sizing: border-box;
 		margin: 0;
 		padding: 0;
-		/* overflow: hidden; */
 	}
+
 	html {
 		font-family: system-ui, sans-serif;
-		scroll-behavior: smooth;		
+		scroll-behavior: smooth;
 	}
+
 	body {
 		width: 100%;
 		min-height: 100vh;
-
 		background-color: #333;
-		/* background-color: #ddd; */
-		color: #f7f7f7f7;
+		color: #f7f7f7;
+	}
+
+	/* Skip-to-content link */
+	.skip-link {
+		position: absolute;
+		top: -100px;
+		left: 1rem;
+		z-index: 9999;
+		padding: 0.6em 1.2em;
+		background: #B4CD02;
+		color: #232323;
+		font-weight: 700;
+		border-radius: 0 0 0.5rem 0.5rem;
+		text-decoration: none;
+		transition: top 0.2s;
+	}
+
+	.skip-link:focus {
+		top: 0;
+	}
+
+	/* Focus visible global */
+	:focus-visible {
+		outline: 3px solid #B4CD02;
+		outline-offset: 3px;
+		border-radius: 3px;
 	}
 
 	.hr_custom {
 		top: 0;
-		height: 3px; /* Equivalente a h-[2px] en Tailwind */
-		width: 90%; /* Equivalente a w-full en Tailwind */
-		min-width: 18rem; /* Equivalente a min-w-[18rem] en Tailwind */
-		border-top: 0; /* Equivalente a border-t-0 en Tailwind */
-		background: transparent; /* Equivalente a bg-transparent en Tailwind */
-		background-image: linear-gradient(to right, transparent, #78866b, transparent); /* Equivalente a bg-gradient-to-r from-transparent via-white to-transparent en Tailwind */
+		height: 3px;
+		width: 90%;
+		min-width: 18rem;
+		border-top: 0;
+		background: transparent;
+		background-image: linear-gradient(to right, transparent, #78866b, transparent);
 		background-position: center;
 	}
 
 	h2 {
-		/* font-family: 'chalkboard'; */
 		font-size: 40px;
-		
 	}
 </style>

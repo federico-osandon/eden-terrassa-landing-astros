@@ -1,81 +1,162 @@
 ---
-import MenuHamb from "./MenuHamb.astro"	
+import MenuHamb from "./MenuHamb.astro"
 ---
 <header>
 	<nav>
 		<div class="brand-content">
-				<!-- <a class="brand" href="/" aria-current="page">EDEN</a> -->
-				<a class="brand" href="/" aria-current="page">
-					<img src="/eden-logo.svg" class="Logo-eden" alt="Logo de Eden Terrassa" />
-				</a>
+			<a class="brand" href="/" aria-current="page">
+				<img src="/eden-logo.svg" class="Logo-eden" alt="Logo de Eden Terrassa" />
+			</a>
 		</div>
-		<button class="menu-hamb-content" aria-label="Abrir menú" id="menu-btn">
-			  <!-- <img class="menu-hamb" src="/menu-hamb.svg" alt="menu" /> -->
-			  <MenuHamb />
+		<button
+			class="menu-hamb-content"
+			aria-label="Abrir menú"
+			aria-expanded="false"
+			aria-controls="mobile-menu"
+			id="menu-btn"
+		>
+			<MenuHamb />
 		</button>
 	</nav>
-	
+
+	<!-- Menú mobile -->
+	<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+		<nav class="mobile-nav" aria-label="Navegación principal">
+			<a href="#entrenamientos" class="mobile-link">Entrenamientos</a>
+			<a href="#eventos" class="mobile-link">Próximos eventos</a>
+			<a href="#donde-estamos" class="mobile-link">Dónde estamos</a>
+			<a href="#en-vivo" class="mobile-link">En vivo</a>
+			<a href="#suscripcion" class="mobile-link mobile-link--cta">Accede gratis</a>
+		</nav>
+	</div>
 </header>
 
-
 <style>
-
 	header {
-		;
 		display: flex;
 		flex-direction: column;
-		/* justify-content: center;
-		align-items: center; */
 		width: 100%;
 		height: 100%;
 	}
-    nav {
+
+	nav {
 		position: fixed;
 		width: 100%;
-
 		display: flex;
 		flex-direction: row;
-		flex-wrap: initial;
-
 		align-items: center;
 		justify-content: space-between;
 		padding: 0.5rem;
 		gap: 0.5rem;
-		/* border-bottom: solid 1px #aaa; */
-		/* background-color: #eee; */
-		z-index: 10;
+		z-index: 100;
 	}
 
 	.brand {
 		display: inline-block;
 		min-width: 9rem;
 		padding: 0.5rem;
-		font-family: 'chalkboard', sans-serif;
-		font-size: 1rem;
-		font-weight: bolder;
-		/* border-radius: 0.2rem;
-		border: solid 1px #aaa; */
 		text-align: center;
 		text-decoration: none;
-		color: #333;|
-	}
-
-	.brand[aria-current='page'] {
 		color: #f7f7f7;
-		
-		/* background-color: #d4d4d4; */
 	}
 
 	.menu-hamb-content {
 		cursor: pointer;
 		background: none;
 		border: none;
-		padding: 0;
+		padding: 0.4rem;
+		border-radius: 6px;
+		z-index: 101;
+		position: relative;
 	}
-	
 
 	.Logo-eden {
 		width: 100px;
 	}
+
+	/* Mobile overlay menu */
+	.mobile-menu {
+		position: fixed;
+		inset: 0;
+		background: rgba(35, 35, 35, 0.97);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		z-index: 99;
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity 0.25s ease;
+	}
+
+	.mobile-menu.is-open {
+		opacity: 1;
+		pointer-events: all;
+	}
+
+	.mobile-nav {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 2rem;
+	}
+
+	.mobile-link {
+		color: #f7f7f7;
+		text-decoration: none;
+		font-size: 1.5rem;
+		font-weight: 600;
+		letter-spacing: 0.02em;
+		transition: color 0.2s;
+	}
+
+	.mobile-link:hover {
+		color: #B4CD02;
+	}
+
+	.mobile-link--cta {
+		margin-top: 0.5rem;
+		padding: 0.7em 2em;
+		background: linear-gradient(120deg, #B4CD02 0%, #eaf7b1 100%);
+		color: #232323;
+		border-radius: 2em;
+		font-weight: 700;
+	}
+
+	.mobile-link--cta:hover {
+		color: #232323;
+		filter: brightness(1.08);
+	}
 </style>
-	
+
+<script>
+	const btn = document.getElementById('menu-btn');
+	const menu = document.getElementById('mobile-menu');
+
+	btn?.addEventListener('click', () => {
+		const isOpen = menu?.classList.toggle('is-open');
+		btn.setAttribute('aria-expanded', String(isOpen));
+		menu?.setAttribute('aria-hidden', String(!isOpen));
+		btn.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+	});
+
+	// Cerrar al hacer clic en un enlace
+	menu?.querySelectorAll('a').forEach((link) => {
+		link.addEventListener('click', () => {
+			menu.classList.remove('is-open');
+			btn?.setAttribute('aria-expanded', 'false');
+			menu.setAttribute('aria-hidden', 'true');
+			btn?.setAttribute('aria-label', 'Abrir menú');
+		});
+	});
+
+	// Cerrar con Escape
+	document.addEventListener('keydown', (e) => {
+		if (e.key === 'Escape' && menu?.classList.contains('is-open')) {
+			menu.classList.remove('is-open');
+			btn?.setAttribute('aria-expanded', 'false');
+			menu.setAttribute('aria-hidden', 'true');
+			btn?.setAttribute('aria-label', 'Abrir menú');
+			btn?.focus();
+		}
+	});
+</script>

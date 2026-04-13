@@ -10,6 +10,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.1.6",
     "astro": "^4.5.12",
     "gsap": "^3.12.5",
     "scrolltrigger": "^1.0.1"

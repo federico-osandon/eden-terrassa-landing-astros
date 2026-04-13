@@ -2,7 +2,7 @@
 import GradientCircles from '../GradientCircles/GradientCircles.astro';
 import StyledSectionTitle from '../StyledSectionTitle/StyledSectionTitle.astro';
 ---
-<section class="suscripcion-section">
+<section class="suscripcion-section" id="suscripcion">
     <div class="suscripcion-gradient-overlay">
         <GradientCircles class="suscripcion-circles" variant="alt2" />
     </div>
@@ -16,10 +16,10 @@ import StyledSectionTitle from '../StyledSectionTitle/StyledSectionTitle.astro';
             <!-- <a href="https://form.typeform.com/to/kr5FS8Sp">Accede a tu regalo</a> -->
         </div>
         <form class="suscripcion-form" enctype="multipart/form-data">
-            <label for="nombre">Nombre</label>
-            <input type="text" id="your-name" name="your-name" required placeholder="Tu nombre" />
-            <label for="email">Email</label>
-            <input type="email" id="your-email" name="your-email" required placeholder="Tu email" />
+            <label for="your-name">Nombre</label>
+            <input type="text" id="your-name" name="your-name" required placeholder="Tu nombre" autocomplete="given-name" />
+            <label for="your-email">Email</label>
+            <input type="email" id="your-email" name="your-email" required placeholder="Tu email" autocomplete="email" />
             <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-fID-pTAG-oX" />
             <button type="submit">Accede a tu regalo</button>
         </form>

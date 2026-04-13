@@ -2,9 +2,10 @@
 import SectionTitle from "../Section-Title/Section-Title.astro"
 import GradientCircles from '../GradientCircles/GradientCircles.astro';
 import StyledSectionTitle from '../StyledSectionTitle/StyledSectionTitle.astro';
+import { eventos } from '../../data/events';
 ---
 
-<section class="sectionEventos">
+<section class="sectionEventos" id="eventos">
 	<div class="eventos-gradient-overlay">
 		<GradientCircles class="eventos-circles" variant="alt2" />
 	</div>
@@ -13,87 +14,33 @@ import StyledSectionTitle from '../StyledSectionTitle/StyledSectionTitle.astro';
 		Próximos Eventos
 	</SectionTitle>
 	<div class="eventos-grid">
-		<!-- Evento 1 -->
-		<article class="evento-card">
-			<div class="evento-header">
-				<div class="evento-avatar">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-						<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
-					</svg>
+		{eventos.map((evento) => (
+			<article class="evento-card">
+				<div class="evento-header">
+					<div class="evento-avatar">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+							<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+						</svg>
+					</div>
+					<div class="evento-header-info">
+						<h3 class="evento-title">Iglesia Edén Terrassa</h3>
+						<p class="evento-date">{evento.date}</p>
+					</div>
 				</div>
-				<div class="evento-header-info">
-					<h3 class="evento-title">Iglesia Edén Terrassa</h3>
-					<p class="evento-date">Noviembre 2025</p>
+				<div class="evento-content">
+					<p class="evento-description">{evento.description}</p>
 				</div>
-			</div>
-			<div class="evento-content">
-				<p class="evento-description">¡Únete a nosotros en nuestro próximo Retiro de la Iglesia! Un tiempo especial de comunión, adoración y crecimiento espiritual.</p>
-			</div>
-			<img src="/images/hero/hero-image.webp" alt="Retiro de la Iglesia en Noviembre 2025" class="evento-img" />
-			<div class="evento-actions">
-				<button class="evento-action-btn">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-						<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-					</svg>
-					<span>Me interesa</span>
-				</button>
-				<button class="evento-action-btn">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-						<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-					</svg>
-					<span>Comentar</span>
-				</button>
-				<button class="evento-action-btn">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-						<path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
-						<polyline points="16 6 12 2 8 6"/>
-						<line x1="12" y1="2" x2="12" y2="15"/>
-					</svg>
-					<span>Compartir</span>
-				</button>
-			</div>
-		</article>
-
-		<!-- Evento 2 -->
-		<article class="evento-card">
-			<div class="evento-header">
-				<div class="evento-avatar">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-						<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
-					</svg>
-				</div>
-				<div class="evento-header-info">
-					<h3 class="evento-title">Iglesia Edén Terrassa</h3>
-					<p class="evento-date">Marzo 2026</p>
-				</div>
-			</div>
-			<div class="evento-content">
-				<p class="evento-description">Encuentro ministerial especial para líderes y colaboradores. Un espacio de formación, inspiración y fortalecimiento en el servicio.</p>
-			</div>
-			<img src="/images/hero/reunion.webp" alt="Encuentro ministerial en Marzo 2026" class="evento-img" />
-			<div class="evento-actions">
-				<button class="evento-action-btn">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-						<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-					</svg>
-					<span>Me interesa</span>
-				</button>
-				<button class="evento-action-btn">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-						<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-					</svg>
-					<span>Comentar</span>
-				</button>
-				<button class="evento-action-btn">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-						<path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
-						<polyline points="16 6 12 2 8 6"/>
-						<line x1="12" y1="2" x2="12" y2="15"/>
-					</svg>
-					<span>Compartir</span>
-				</button>
-			</div>
-		</article>
+				<img
+					src={evento.image}
+					alt={evento.imageAlt}
+					class="evento-img"
+					width="500"
+					height="350"
+					loading="lazy"
+					decoding="async"
+				/>
+			</article>
+		))}
 	</div>
 </section>
 

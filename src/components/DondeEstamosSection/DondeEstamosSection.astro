@@ -1,55 +1,40 @@
 ---
 import SectionTitle from "../Section-Title/Section-Title.astro";
 import StyledSectionTitle from "../StyledSectionTitle/StyledSectionTitle.astro";
-
+import { locations } from '../../data/locations';
 ---
-<section class="sectionDondeEstamos">
+<section class="sectionDondeEstamos" id="donde-estamos">
     <StyledSectionTitle title="Ven a visitarnos" color="#55603d" />
     <SectionTitle>
         Ciudades donde estamos
     </SectionTitle>
-    <!-- <h2 class="donde-title">¿Dónde nos encuentras?</h2> -->
     <div class="donde-grid">
-        <div class="donde-card">
-            <img src="/images/hero/hero-image.webp" alt="Terrassa" class="donde-img" />
-            <div class="donde-info">
-                <h3>Terrassa</h3>
-                <p>Carrer de la Mare de Déu dels Àngels, 32, 08221 Terrassa, Barcelona</p>
-                <a href="https://maps.google.com/?q=Carrer+de+la+Mare+de+Déu+dels+Àngels,+32,+08221+Terrassa,+Barcelona" target="_blank" rel="noopener noreferrer" class="donde-btn">Ver ubicación</a>
+        {locations.map((loc) => (
+            <div class="donde-card">
+                <img
+                    src={loc.image}
+                    alt={loc.imageAlt}
+                    class="donde-img"
+                    width="340"
+                    height="200"
+                    loading="lazy"
+                    decoding="async"
+                />
+                <div class="donde-info">
+                    <h3>{loc.city}</h3>
+                    <p>{loc.address}</p>
+                    <a
+                        href={loc.mapsUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="donde-btn"
+                        aria-label={`Ver ubicación de ${loc.city} en Google Maps`}
+                    >
+                        Ver ubicación
+                    </a>
+                </div>
             </div>
-        </div>
-        <div class="donde-card">
-            <img src="/images/iglesias/blanes.webp" alt="Blanes" class="donde-img" />
-            <div class="donde-info">
-                <h3>Blanes</h3>
-                <p>Carrer más torrents N 2,2°, Girona CP.: 17300</p>
-                <a href="https://maps.google.com/?q=Carrer+más+torrents+N+2,2°,+Girona+CP.:+17300" target="_blank" rel="noopener noreferrer" class="donde-btn">Ver ubicación</a>
-            </div>
-        </div>
-        <div class="donde-card">
-            <img src="/images/iglesias/obarco.webp" alt="O Barco" class="donde-img" />
-            <div class="donde-info">
-                <h3>O Barco de Valdeorras</h3>
-                <p>Avenida Marcelino Suárez 8 bajo. Galicia CP.:32300</p>
-                <a href="https://maps.google.com/?q=Avenida+Marcelino+Suárez+8+bajo.+Galicia+CP.:32300" target="_blank" rel="noopener noreferrer" class="donde-btn">Ver ubicación</a>
-            </div>
-        </div>
-        <div class="donde-card">
-            <img src="/images/iglesias/rubi.jpg" alt="Rubí" class="donde-img" />
-            <div class="donde-info">
-                <h3>Rubí</h3>
-                <p>Carrer de la Indústria, 7, 08191 Rubí, Barcelona</p>
-                <a href="https://maps.google.com/?q=Carrer+de+la+Indústria,+7,+08191+Rubí,+Barcelona" target="_blank" rel="noopener noreferrer" class="donde-btn">Ver ubicación</a>
-            </div>
-        </div>
-        <div class="donde-card">
-            <img src="/images/iglesias/eden-terrasa.jpg" alt="Savaterra de Miño" class="donde-img" />
-            <div class="donde-info">
-                <h3>Savaterra de Miño</h3>
-                <p>Av. de Galicia, 21, 36450 Salvaterra de Miño, Pontevedra</p>
-                <a href="https://maps.google.com/?q=Av.+de+Galicia,+21,+36450+Salvaterra+de+Miño,+Pontevedra" target="_blank" rel="noopener noreferrer" class="donde-btn">Ver ubicación</a>
-            </div>
-        </div>
+        ))}
     </div>
 </section>
 
