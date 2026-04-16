@@ -1,0 +1,149 @@
+---
+import SectionTitle from "../Section-Title/Section-Title.astro";
+import StyledSectionTitle from "../StyledSectionTitle/StyledSectionTitle.astro";
+import { locations } from '../../data/locations';
+---
+<section class="sectionDondeEstamos" id="donde-estamos">
+    <StyledSectionTitle title="Ven a visitarnos" color="#55603d" />
+    <SectionTitle>
+        Ciudades donde estamos
+    </SectionTitle>
+    <div class="donde-grid">
+        {locations.map((loc) => (
+            <div class="donde-card">
+                <img
+                    src={loc.image}
+                    alt={loc.imageAlt}
+                    class="donde-img"
+                    width="340"
+                    height="200"
+                    loading="lazy"
+                    decoding="async"
+                />
+                <div class="donde-info">
+                    <h3>{loc.city}</h3>
+                    <p>{loc.address}</p>
+                    <a
+                        href={loc.mapsUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="donde-btn"
+                        aria-label={`Ver ubicación de ${loc.city} en Google Maps`}
+                    >
+                        Ver ubicación
+                    </a>
+                </div>
+            </div>
+        ))}
+    </div>
+</section>
+
+<style>
+.sectionDondeEstamos {
+    width: 100%;
+    min-height: 70vh;
+    padding: 80px 25px 40px 25px;
+    background: linear-gradient(120deg, #fff 0%, #f7f7f7 60%, #e0e0e0 90%, #444 100%);
+    position: relative;
+    color: #232323;
+}
+.donde-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 2.5rem;
+    color: #232323;
+    letter-spacing: 0.04em;
+    text-shadow: 0 2px 12px #b4cd02a0;
+}
+.donde-grid {
+    width: 100%;
+    max-width: 1300px;
+    margin: 30px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2.5rem;
+}
+.donde-card {
+    background: linear-gradient(135deg, #e8e8e8 0%, #d8d8d8 100%);
+    border-radius: 2rem;
+    box-shadow: 0 4px 24px rgba(180,205,2,0.18);
+    width: 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+    position: relative;
+}
+.donde-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(180,205,2,0.25);
+}
+.donde-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 2px solid #55603d;
+}
+.donde-info {
+    width: 100%;
+    padding: 1.2rem 1rem 1.2rem 1rem;
+    color: #232323;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.donde-info h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #55603d;
+    margin: 0 0 0.3rem 0;
+    text-shadow: 0 2px 8px rgba(85,96,61,0.4);
+}
+.donde-info p {
+    font-size: 1rem;
+    margin: 0 0 0.8rem 0;
+    font-weight: 500;
+}
+.donde-btn {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background: linear-gradient(135deg, #55603d 0%, #6a7a4a 100%);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(85,96,61,0.3);
+}
+.donde-btn:hover {
+    background: linear-gradient(135deg, #6a7a4a 0%, #55603d 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(85,96,61,0.45);
+}
+@media (max-width: 1100px) {
+    .donde-grid {
+        gap: 1.2rem;
+    }
+    .donde-card {
+        width: 95vw;
+        max-width: 340px;
+    }
+}
+@media (max-width: 900px) {
+    .donde-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+    .donde-card {
+        width: 90vw;
+        max-width: 98vw;
+    }
+}
+</style>

@@ -1,60 +1,290 @@
 ---
-import SectionTitle from "../Section-Title/Section-Title.astro"
-import CategoryButton from "./CategoryButton.astro"
+import SectionTitle from "../Section-Title/Section-Title.astro";
+import CategoryButton from "./CategoryButton.astro";
+import GradientCircles from "../GradientCircles/GradientCircles.astro";
+import StyledSectionTitle from "../StyledSectionTitle/StyledSectionTitle.astro";
 
 const entrenamientos = [
-	{id: 1, name: 'Entrenamientos Presenciales', description: 'Entrenamientos presenciales en el local Eden Terrassa'},
-	{id: 2, name: 'Adán', description: 'Entrenamientos para niños y niñas de 6 a 12 años'},
-	{id: 3, name: 'Entrenamientos Maestros de niños', description: 'Entrenamientos para maestros de niños de 6 a 12 años'},
-	{id: 4, name: 'Recursos de Formación Infantil', description: 'Recursos de formación para maestros de niños de 6 a 12 años'},
-	{id: 5, name: 'Entrenamientos Equipos de alabanzas', description: 'Entrenamientos para equipos de alabanzas'},
-	{id: 6, name: 'Entrenamientos Finanzas', description: 'Entrenamientos para el área de finanzas'},
-	{id: 7, name: 'Entrenamientos Adolecentes', description: 'Entrenamientos para adolecentes de 13 a 17 años'},
-	{id: 8, name: 'Entrenamientos Liderazgo', description: 'Entrenamientos para líderes'},
-]
+	{
+		id: 1,
+		name: "Entrenamientos Presenciales",
+		description: "Entrenamientos presenciales en el local Eden Terrassa",
+	},
+	{
+		id: 2,
+		name: "Adán",
+		description: "Entrenamientos para niños y niñas de 6 a 12 años",
+	},
+	{
+		id: 3,
+		name: "Entrenamientos Maestros de niños",
+		description: "Entrenamientos para maestros de niños de 6 a 12 años",
+	},
+	{
+		id: 4,
+		name: "Recursos de Formación Infantil",
+		description:
+			"Recursos de formación para maestros de niños de 6 a 12 años",
+	},
+	{
+		id: 5,
+		name: "Entrenamientos Equipos de alabanzas",
+		description: "Entrenamientos para equipos de alabanzas",
+	},
+	{
+		id: 6,
+		name: "Entrenamientos Finanzas",
+		description: "Entrenamientos para el área de finanzas",
+	},
+	{
+		id: 7,
+		name: "Entrenamientos Adolecentes",
+		description: "Entrenamientos para adolecentes de 13 a 17 años",
+	},
+	{
+		id: 8,
+		name: "Entrenamientos Liderazgo",
+		description: "Entrenamientos para líderes",
+	},
+];
 ---
 
-<section class="sectionEntrenamientos">
-	<SectionTitle>
-		Entrenamientos
-	</SectionTitle>
-	<div class="entrenamientos-category-content">
-		{ entrenamientos.map(entrenamiento => (
-			<CategoryButton>
-				{entrenamiento.name}
-			</CategoryButton>
-		))}		
+<section class="sectionEntrenamientos" id="entrenamientos">
+	<div class="entrenamientos-gradient-overlay">
+		<GradientCircles class="entrenamientos-circles" variant="alt2" />
+	</div>
+	<StyledSectionTitle title="Tenemos para ofrecerte" />
+	<SectionTitle> Actividades y Reuniones </SectionTitle>
+	<div class="entrenamientos-cards-grid">
+		<div class="entrenamiento-card card-gps">
+			<h3>
+				<svg
+					class="card-icon"
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<circle cx="12" cy="12" r="10"></circle>
+					<polygon
+						points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"
+					></polygon>
+				</svg>
+				Entrenamiento GPS
+			</h3>
+			<p class="entrenamiento-horario">
+				<strong>Miércoles 20:00 hs</strong>
+				<span class="modo-online">(Zoom)</span>
+			</p>
+			<p class="entrenamiento-desc">
+				Estudio de los conceptos espirituales de la Biblia. Abierto a
+				todos los que deseen profundizar en la fe y el conocimiento
+				bíblico.
+			</p>
+		</div>
+		<div class="entrenamiento-card card-reunion">
+			<h3>
+				<svg
+					class="card-icon"
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+					<circle cx="9" cy="7" r="4"></circle>
+					<path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+					<path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+				</svg>
+				Reunión Presencial
+			</h3>
+			<p class="entrenamiento-horario">
+				<strong>Sábados 10:00 hs</strong>
+				<span class="modo-presencial">(Presencial)</span>
+			</p>
+			<p class="entrenamiento-desc">
+				Comenzamos compartiendo un café, y a las 11:00 realizamos la
+				reunión principal.
+			</p>
+		</div>
+		<div class="entrenamiento-card card-online-destacada">
+			<h3>
+				<svg
+					class="card-icon"
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<polygon points="23 7 16 12 23 17 23 7"></polygon>
+					<rect x="1" y="5" width="15" height="14" rx="2" ry="2"
+					></rect>
+				</svg>
+				Transmisión Online
+			</h3>
+			<p class="entrenamiento-horario">
+				<strong>Sábados 11:00 hs</strong>
+				<span class="modo-online">(Online)</span>
+			</p>
+			<p class="entrenamiento-desc">
+				Sigue la reunión en vivo desde cualquier lugar a partir de las
+				11:00 hs. ¡No te lo pierdas!
+			</p>
+		</div>
 	</div>
 </section>
 
 <style>
 	.sectionEntrenamientos {
 		width: 100%;
-		min-height: 100vh; /* Cambiado de height fijo a min-height */
-
-		padding: 100px 25px 50px 25px; /* Aumentado el padding inferior */
-
-		/* color: #f7f7f7; */
+		min-height: 100vh;
+		padding: 100px 25px 50px 25px;
 		background-color: #333;
 		position: relative;
-
+		overflow: hidden;
+	}
+	.entrenamientos-gradient-overlay {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+		z-index: 1;
+	}
+	.entrenamientos-cards-grid,
+	.SectionTitle {
+		position: relative;
+		z-index: 2;
 	}
 
-
-
-	.entrenamientos-category-content {
+	.entrenamientos-cards-grid {
 		width: 100%;
-		min-height: 70%; /* Cambiado de height fijo a min-height */
-
-		padding: 20px 0; /* Añadido padding vertical */
-		/* border: 4px solid #78866b;
-		border-radius: 10px; */
-
+		max-width: 1300px;
+		margin: 0 auto;
 		display: flex;
+		flex-direction: row;
 		flex-wrap: wrap;
-		justify-content: center; /* Cambiado a center para mejor distribución */
-		align-items: flex-start; /* Cambiado a flex-start para mejor alineación vertical */
-		gap: 15px; /* Añadido gap para espaciado uniforme */
+		justify-content: space-around;
+		align-items: center;
+		gap: 2.5rem;
+		margin-top: 5.5rem;
+		height: 100%;
+	}
+	.entrenamiento-card {
+		background: #232323;
+		border: 3px solid #f7f7f7;
+		border-radius: 2rem;
+		box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+		padding: 2.2rem 2rem 1.5rem 2rem;
+		min-width: 300px;
+		max-width: 420px;
+		flex: 1 1 0;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		min-height: 300px;
+		height: 100%;
+		transition:
+			box-shadow 0.2s,
+			border 0.2s;
+	}
+	.entrenamiento-card h3 {
+		color: #b4cd02;
+		font-size: 2rem;
+		margin-bottom: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.02em;
+		display: flex;
+		align-items: center;
+		gap: 0.6rem;
+	}
+	.card-icon {
+		width: 1.6rem;
+		height: 1.6rem;
+		color: #b4cd02;
+		flex-shrink: 0;
+		transition: transform 0.3s ease;
+	}
+	.entrenamiento-card:hover .card-icon {
+		transform: rotate(10deg) scale(1.1);
+	}
+	.card-online-destacada h3 .card-icon {
+		color: #232323;
+	}
+	.entrenamiento-horario {
+		font-size: 1.15rem;
+		margin-bottom: 0.7rem;
+		color: #fff;
+	}
+	.modo-online {
+		background: rgba(180, 205, 2, 0.18);
+		color: #b4cd02;
+		border-radius: 0.5em;
+		padding: 0.08em 0.35em;
+		font-weight: 700;
+		margin-left: 0.5em;
+	}
+	.modo-presencial {
+		background: rgba(180, 205, 2, 0.1);
+		color: #b4cd02;
+		border-radius: 0.5em;
+		padding: 0.08em 0.35em;
+		font-weight: 700;
+		margin-left: 0.5em;
+	}
+	.entrenamiento-desc {
+		color: #eaeaea;
+		font-size: 16px;
+		margin-bottom: 0;
+		margin-top: 0.5rem;
+		line-height: 1.5;
+	}
+	/* Card destacada para online */
+	.card-online-destacada {
+		background: linear-gradient(120deg, #b4cd02 0%, #eaf7b1 100%);
+		color: #232323;
+		border: 3px solid #f7f7f7;
+		box-shadow: 0 6px 32px rgba(180, 205, 2, 0.18);
+		position: relative;
+		z-index: 2;
+	}
+	.card-online-destacada h3,
+	.card-online-destacada .entrenamiento-horario {
+		color: #232323;
+	}
+	.card-online-destacada .entrenamiento-desc {
+		color: #232323;
+	}
+	.card-online-destacada .modo-online {
+		background: #232323;
+		color: #b4cd02;
+	}
+	@media (max-width: 900px) {
+		.entrenamientos-cards-grid {
+			flex-direction: column;
+			align-items: center;
+			gap: 1.5rem;
+		}
+		.entrenamiento-card {
+			min-width: 90vw;
+			max-width: 98vw;
+			padding: 1.5rem 1rem 1.2rem 1rem;
+		}
+		.entrenamiento-card h3 {
+			font-size: 1.4rem;
+		}
+		.entrenamiento-desc {
+			font-size: 0.98rem;
+		}
 	}
 	@media (max-width: 1024px) {
 		.entrenamientos-category-content {
@@ -82,23 +312,20 @@ const entrenamientos = [
 	}
 </style>
 
-
 <script>
-	 import { gsap } from 'gsap'
-	 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+	// import { gsap } from 'gsap'
+	// import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-	 gsap.registerPlugin(ScrollTrigger)
+	// gsap.registerPlugin(ScrollTrigger)
 
-	 let categories = gsap.timeline({
-	 		scrollTrigger: {
-	 			trigger: '.sectionEntrenamientos',
-	 			// markers: true,
-	 			scrub: 10,
-	 			pin: true,
-	 			end: 'bottom top',
-	 			pinSpacing: false,
-	 		}
-	 	})
-
-
+	// let categories = gsap.timeline({
+	// 	scrollTrigger: {
+	// 		trigger: '.sectionEntrenamientos',
+	// 		// markers: true,
+	// 		scrub: 10,
+	// 		pin: true,
+	// 		end: 'bottom top',
+	// 		pinSpacing: false,
+	// 	}
+	// })
 </script>
